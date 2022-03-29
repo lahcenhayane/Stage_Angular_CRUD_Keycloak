@@ -1,0 +1,21 @@
+<div class="container mt-5 ">
+    <div class="card" style="width: 50%; margin: auto;">
+      <div class="card-header d-flex justify-content-between">
+        Profil
+      </div>
+      <div class="card-body">
+          <ul class="list-group list-group-flush w-100">
+            <li class="list-group-item "><b>Username:</b> {{ user.username }} </li>
+            <li class="list-group-item"><b>Firstname:</b> {{ user.firstName }}</li>
+            <li class="list-group-item"><b>Lastname:</b> {{ user.lastName }}</li>
+            <li class="list-group-item"><b>Email: </b> {{ user.email }}</li>
+            <li class="list-group-item"><b>Enable: </b> {{ user.enabled }}</li>
+            <li class="list-group-item"><b>Date Creation: </b> {{ user.createdTimestamp }}</li>
+          </ul>
+      </div>
+      <div class="card-footer d-flex justify-content-between">
+        <a routerLink="" class="btn-sm btn btn-dark">Return</a>
+        </div>
+    </div>
+  </div>
+ 

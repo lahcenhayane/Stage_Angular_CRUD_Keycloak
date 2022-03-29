@@ -1,0 +1,15 @@
+.btnusername{
+    text-decoration: none;
+    color: black;
+}
+
+.dropdown-menu{
+    right: 1% !important;
+    left: auto !important;
+}
+
+.login{
+    margin: 10px;
+    text-decoration: none;
+
+}

@@ -1,0 +1,33 @@
+<div class="container mt-5" style="width: 70%;">
+    <div class="card">
+        <div class="card-body d-flex justify-content-between">
+          List Authors ({{ authors.length }})
+          <a *ngIf="hasRoleAdmin" class="btn btn-success btn-sm" routerLink="/movie/add">Add New Author</a>
+        </div>
+    </div>
+    <div class="card mt-3">
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let author of authors">
+                <th scope="row">{{author.id}}</th>
+                <td>{{author.name}}</td>
+                <td>
+                    <a class="btn-sm btn btn-info" routerLink="/author/{{author.id}}/detail">Detail</a>
+                    <a *ngIf="hasRoleAdmin" class="btn-sm btn btn-primary mx-1" routerLink="/author/{{author.id}}/edit">Edit</a>
+                    <!-- Button Modal Delete Miove -->
+                    <button *ngIf="hasRoleAdmin" type="button"data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn-sm btn btn-danger">Delete</button>
+                    
+                </td>
+            </tr>
+            
+            </tbody>
+        </table>
+    </div>
+</div>

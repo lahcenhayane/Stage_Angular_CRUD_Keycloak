@@ -1,0 +1,40 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" routerLink="/">Application</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse " id="navbarNav">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" routerLink="">Home</a>
+        </li>
+        <li class="nav-item" *ngIf="isLogin">
+          <a class="nav-link" routerLink="movies">Movies</a>
+        </li>
+        <li class="nav-item" *ngIf="isLogin">
+          <a class="nav-link" routerLink="authors">Authors</a>
+        </li>
+      </ul>
+      <div class="d-flex">
+        <div *ngIf="!isLogin">
+          <a class="login mr-5" href="">Login</a>
+          <a class="login ml-5" routerLink="register">Register</a>
+        </div>
+        <div class="dropdown" *ngIf="isLogin">
+          <a class="dropdown-toggle btnusername" type="button" id="dropUsername" data-bs-toggle="dropdown" aria-expanded="false">{{username}}</a>
+          <ul class="dropdown-menu" aria-labelledby="dropUsername">
+            <li><a class="dropdown-item" routerLink="profil">Profil</a></li>
+            <li><a class="dropdown-item" href="#">Edit Password</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><button class="dropdown-item color-white" type="button" (click)="logout()">Logout</button></li>
+          </ul>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</nav>
+
+
+<router-outlet></router-outlet>

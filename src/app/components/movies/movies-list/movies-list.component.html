@@ -1,0 +1,56 @@
+<div class="container mt-5">
+    <div class="card">
+        <div class="card-body d-flex justify-content-between">
+          List Movies ({{ movies.length }})
+          <a *ngIf="hasRoleAdmin" class="btn btn-success btn-sm" routerLink="/movie/add">Add Movie</a>
+        </div>
+    </div>
+    <div class="card mt-3">
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Image</th>
+                <th scope="col">Title</th>
+                <th scope="col">Description</th>
+                <th scope="col">Author</th>
+                <th scope="col">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let row of movies">
+                <th scope="row">{{row.id}}</th>
+                <td><img class="img" src="{{row.image}}" alt="" srcset=""></td>
+                <td>{{row.title}}</td>
+                <td>{{row.description}}</td>
+                <td>{{row.author?.name}}</td>
+                <td>
+                    <a class="btn-sm btn btn-info" routerLink="/movie/{{row.id}}/detail">Detail</a>
+                    <a *ngIf="hasRoleAdmin" class="btn-sm btn btn-primary mx-1" routerLink="/movie/{{row.id}}/edit">Edit</a>
+                    <!-- Button Modal Delete Miove -->
+                    <button *ngIf="hasRoleAdmin" (click)="deleteMovie(row.id)" type="button"data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn-sm btn btn-danger">Delete</button>
+                    
+                </td>
+            </tr>
+            
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Modal Delete Miove -->
+<div *ngIf="showAndHideModalMovie == true && hasRoleAdmin" class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Delete Movie</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">Are sure !!!!???</div>
+        <div class="modal-footer">
+        <button type="button" class="btn-sm btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button *ngIf="hasRoleAdmin" type="button" class="btn-sm btn btn-danger" (click)="confirmDeleteMovie()">Delete</button>
+        </div>
+    </div>
+    </div>
+</div>
